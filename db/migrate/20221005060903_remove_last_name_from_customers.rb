@@ -3,4 +3,3 @@ class RemoveLastNameFromCustomers < ActiveRecord::Migration[6.1]
      remove_column :customers, :last_name, :string
   end
 end
-›

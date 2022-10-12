@@ -1,8 +1,23 @@
-<header class="fixed-top" style "background-color: #696969">
+<header class="border-bottom border-dark mb-5">
   <nav class="navbar">
     <div class="container-fluid">
       <div class="col-lg-4">
+      <%= link_to "今日の献立", root_path, class: "btn btn-outline-dark btn-lg text-left px-5" %>
       </div>
+      
+          <div class="col-lg-6 float-end text-right">
+            <% if admin_signed_in? %>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete,class: "btn btn-outline-dark mx-1" %>
+            <% elsif customer_signed_in? %>
+              <%= link_to "投稿", new_list_path, class: "btn btn-outline-dark mx-2" %>
+              <%= link_to "投稿一覧", lists_path, class: "btn btn-outline-dark mx-2" %>
+              <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: "btn btn-outline-dark mx-2" %>
+            <% else %>
+              <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark mx-2" %>
+              <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark mx-2" %>
+            <% end %>
+          </div>
     </div>
+
   </nav>
 </header>
